@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'donator_base.html' %}
+{% block content %}
+
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header"><strong>Donation</strong></div>
+        <div class="card-body card-block">
+            <form method="post">{% csrf_token %}
+                <div class="form-group">
+                    <label class=" form-control-label">start date</label>
+                    <input    class="form-control" readonly value="{{approval.start_date}}">
+
+                </div>
+
+                 <div class="form-group">
+                    <label class=" form-control-label">end_date</label>
+                     <input  required  class="form-control" readonly value="{{approval.end_date}}">
+
+                </div>
+                <div class="form-group">
+                    <label class=" form-control-label">medicine</label>
+                     <input  required  class="form-control" readonly value="{{approval.medicine_name}}">
+
+                </div>
+
+                <div class="form-group">
+                    <label  class=" form-control-label">Quantity</label>
+                 <input  required  class="form-control" readonly value="{{approval.quantity}}">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Note</label>
+                    <input type="text" class="form-control" name="note" id="address" placeholder="Enter availability details/message to admin">
+                    <small class="form-text text-muted"></small>
+                </div>
+
+                <div class="form-actions form-group ">
+                    <button type="submit" class="btn btn-primary btn-sm">Ready to donate</button>
+                </div>
+                {% for message in messages %}
+                <div class="alert alert-primary" role="alert">
+                    {{message}}
+                </div>
+                {% endfor %}
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

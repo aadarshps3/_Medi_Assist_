@@ -1,0 +1,65 @@
+{% extends 'user_base.html' %}
+
+ {% block content %}
+{% load crispy_forms_filters %}
+
+
+<div class="col-lg-20">
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">MEDICINE REQUESTS</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">SI No</th>
+                    <th scope="col">Medicine</th>
+
+
+
+                     <th scope="col">Quantity</th>
+                     <th scope="col">Note</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in medicine %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+
+                    <td>{{n.approval.medicine_name}}</td>
+                    <td>{{n.approval.quantity}}</td>
+                    <td>{{n.note}}</td>
+<!--                    {% if n.status_1 == 0 %}-->
+<!--                    <td>-->
+<!--                       Request pending-->
+<!--                    </td>-->
+
+<!--                    {% elif n.status_1 == 1 %}-->
+
+<!--                    <td>-->
+<!--                         request processing...waiting for admin approval-->
+<!--                    </td>-->
+<!--                    {% elif n.status_1 == 2 %}-->
+<!--                    <td>-->
+<!--                        congratulations!! we will reach you soon-->
+<!--                    </td>-->
+<!--                    {% elif n.status_1 == 3 %}-->
+<!--                    <td>-->
+<!--                         Please add donation request again..-->
+<!--                    </td>-->
+<!--                    {% endif %}-->
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ {% endblock %}

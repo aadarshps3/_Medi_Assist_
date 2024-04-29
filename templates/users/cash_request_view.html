@@ -1,0 +1,68 @@
+{% extends 'user_base.html' %}
+
+ {% block content %}
+{% load crispy_forms_filters %}
+
+<div class="col-lg-20">
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">YOUR CASH REQUESTS</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">SI No</th>
+                    <th scope="col">start date</th>
+
+
+                    <th scope="col">end data</th>
+                    <th scope="col">description</th>
+                     <th scope="col">Amount</th>
+                     <th scope="col">Status</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in cash %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{n.start_date}}</td>
+
+                    <td>{{n.end_date}}</td>
+                    <td>{{n.description}}</td>
+                    <td>{{n.amount}}</td>
+                    {% if n.status_12 == 0 %}
+                    <td>
+                       Request pending
+                    </td>
+
+                    {% elif n.status_12 == 1 %}
+
+                    <td>
+                         request processing...waiting for admin approval
+                    </td>
+                    {% elif n.status_12 == 2 %}
+                    <td>
+                        congratulations!! we will reach you soon
+                    </td>
+                    {% elif n.status_12 == 3 %}
+                    <td>
+                         Please add donation request again..
+                    </td>
+                    {% endif %}
+
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ {% endblock %}

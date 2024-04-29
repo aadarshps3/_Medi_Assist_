@@ -1,0 +1,66 @@
+{% extends 'donator_base.html' %}
+
+{% block content %}
+{% load crispy_forms_filters %}
+
+  <div class="card">
+        <div class="card-header">
+            <strong class="card-title">CASH REQUEST</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">SI No</th>
+
+                     <th scope="col">Trust</th>
+                    <th scope="col">Start date</th>
+
+
+                    <th scope="col">end date</th>
+                    <th scope="col">Description</th>
+                     <th scope="col">Amount</th>
+                     <th scope="col">Pay online</th>
+
+
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in data %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+
+                     <td>{{n.approval.user}}</td>
+                    <td>{{n.approval.start_date}}</td>
+
+                    <td>{{n.approval.end_date}}</td>
+                    <td>{{n.approval.description}}</td>
+                     <td>{{n.approval.amount}}</td>
+
+
+
+                    <td>
+                        {% if n.paystat == 0 %}
+                        <a href="{% url 'payment' n.id %}">
+                            <button type="button" class="btn btn-primary">Pay</button>
+                        </a>
+                        {% elif n.paystat == 1 %}
+                        <a>Payment Completed</a>
+                        {% endif %}
+                    </td>
+
+
+
+
+
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}

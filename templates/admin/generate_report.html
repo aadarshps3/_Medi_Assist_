@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="color:red">Generate Medicine Report</h1>
+<div class="card">
+    <div class="card-body">
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date"> <br><br>
+
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date"> <br><br>
+
+        <input type="submit" value="Generate Report" class="btn btn-success">
+    </form>
+
+    </div>
+</div>
+{% endblock %}

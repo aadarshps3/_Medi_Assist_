@@ -1,0 +1,54 @@
+{% extends 'donator_base.html' %}
+
+{% block content %}
+{% load crispy_forms_filters %}
+
+  <div class="card">
+        <div class="card-header">
+            <strong class="card-title">USERS LIST</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">SI No</th>
+
+                     <th scope="col">User</th>
+                    <th scope="col">Start date</th>
+
+
+                    <th scope="col">end date</th>
+                    <th scope="col">medicine</th>
+                     <th scope="col">quantity</th>
+                     <th scope="col">note</th>
+
+
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in data %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+
+                     <td>{{n.approval.user}}</td>
+                    <td>{{n.approval.start_date}}</td>
+
+                    <td>{{n.approval.end_date}}</td>
+                    <td>{{n.approval.medicine_name}}</td>
+                     <td>{{n.approval.quantity}}</td>
+                       <td>{{n.note}}</td>
+
+
+
+
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}

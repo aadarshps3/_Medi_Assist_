@@ -1,0 +1,95 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+  <head>
+  	<title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	  <link href=" {% static 'home/img/logo.png' %} " rel="icon">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href=" {% static 'login_view/css/style.css' %} ">
+
+	</head>
+	<body class="img" style="background-image: url( {% static 'login_view/images/Med1.jpg' %} );">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+<!--					<h2 class="heading-section">Login #10</h2>-->
+
+				</div>
+			</div>
+
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+
+
+					<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+	<symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+		<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+	</symbol>
+</svg>
+{% for message in messages %}
+<div class="alert alert-danger alert-dismissible d-flex align-items-center " role="alert">
+	<svg class="bi flex-shrink-0 me-2" width="20" height="20" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+	<div class="mt-1" style="padding-left:7px">
+		<a href="#" class="close mt-1" data-dismiss="alert" aria-label="close">&times;</a>
+		{{ message }}
+	</div>
+</div>
+{% endfor %}
+<div class="login-wrap p-0">
+	<h3 class="mb-4 text-center"></h3>
+	<h3 class="mb-4 text-center">Have an account?</h3>
+
+	<form action="#" method="POST" class="signin-form">
+		{% csrf_token %}
+		<div class="form-group">
+			<input type="text" name="uname" class="form-control" placeholder="Username" required>
+		</div>
+		<div class="form-group">
+			<input id="password-field" name="pass" type="password" class="form-control" placeholder="Password" required>
+			<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="form-control btn submit px-3" >Login</button>
+		</div>
+		<div class="form-group d-md-flex">
+			<div class="w-50">
+<!--				<label class="checkbox-wrap checkbox-primary">Remember Me-->
+<!--					<input type="checkbox" checked>-->
+<!--					<span class="checkmark"></span>-->
+				</label>
+			</div>
+			<div class="w-50 text-md-right">
+<!--				<a class="link-light" href="#">Forgot Password?</a>-->
+			</div>
+		</div>
+	</form>
+	<!--	          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>-->
+	<!--	          <div class="social d-flex text-center">-->
+	<!--	          	<a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>-->
+	<!--	          	<a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>-->
+	<!--	          </div>-->
+</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src=" {% static 'login_view/js/jquery.min.js' %} "></script>
+  <script src=" {% static 'login_view/js/popper.js' %} "></script>
+  <script src=" {% static 'login_view/js/bootstrap.min.js' %} "></script>
+  <script src=" {% static 'login_view/js/main.js' %} "></script>
+
+	</body>
+</html>
+

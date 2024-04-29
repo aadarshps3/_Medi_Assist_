@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_filters %}
+<div class="card">
+        <div class="card-header">
+            <strong class="card-title">COMPANY LIST</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+
+
+							<thead>
+
+                <tr>
+                    <th scope="col">SI No</th>
+<!--                    <th scope="col">Type</th>-->
+                    <th scope="col">Username</th>
+                    <th scope="col">Complaint</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Reply</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in feedbacks %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+<!--                    <td>-->
+<!--                        {% if n.user.is_nurse == True %}-->
+<!--                        <p>Nurse</p>-->
+<!--                        {% elif n.user.is_user == True %}-->
+<!--                        <p>User</p>-->
+<!--                        {% endif %}-->
+<!--                    </td>-->
+                    <td>{{n.user}}</td>
+                    <td>{{n.feedback}}</td>
+                    <td>{{n.date}}</td>
+                    <td>
+                        {% if n.reply == None %}
+                        <a href="{% url 'reply_feedback' n.id %}">Reply Now</a>
+                        {% else %}
+                        {{n.reply}}
+                        {% endif %}
+                    </td>
+                 {% empty %}
+                <tr>
+                    <td colspan="7"><h3>No Results Found</h3></td>
+                </tr>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+         </div>
+
+
+
+
+<script type="text/javascript">
+window.mytest = function()
+{ var isValid = confirm('Are you sure Want to Delete ?');if (!isValid) { event.preventDefault();
+  }}
+
+
+
+
+
+
+
+
+
+
+</script>
+{% endblock %}

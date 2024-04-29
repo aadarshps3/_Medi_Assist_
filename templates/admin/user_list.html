@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+{% load crispy_forms_filters %}
+
+<div class="col-lg-20">
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">TRUST LIST</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">SI No</th>
+                    <th scope="col">Trust name</th>
+
+
+                    <th scope="col">Contact number</th>
+                    <th scope="col">Email</th>
+                     <th scope="col">License number</th>
+
+                     <th scope="col">Profile pic</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in user %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{n.name}}</td>
+
+                    <td>{{n.contact_no}}</td>
+                    <td>{{n.email}}</td>
+                    <td>{{n.trust_register_number}}</td>
+
+
+
+                    <td><img src="{{n.profile_pic.url}}"style="width:90px; height:100px;"></td>
+                    <td>
+                        {% if n.verified == 0 %}
+
+                            <a type="button" class="btn btn-success" href="{% url 'users_approval' n.id %}">Approve
+
+                                 <a type="button" class="btn btn-warning" href="{% url 'users_reject' n.id  %}">Reject
+
+
+                            {% elif n.verified == 1 %}
+
+                        <button type="button" class="btn btn-danger">verified account</button>
+
+                                          {% elif n.verified == 2 %}
+
+                        <button type="button" class="btn btn-danger">Rejected</button>
+
+                           {% endif %}
+                           </td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ {% endblock %}
