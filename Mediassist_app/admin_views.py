@@ -12,7 +12,6 @@ from Mediassist_app.models import donor, users, Medicine_approval, Medicine_requ
     Feedback
 import xlsxwriter
 
-
 class CompanyRegistrationView(View):
 
     def get(self, request):
